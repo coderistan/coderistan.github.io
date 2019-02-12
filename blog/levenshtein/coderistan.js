@@ -117,7 +117,7 @@ async function algorithm(){
 				document.getElementById(i+"_"+k).innerHTML = Math.min(sol,ust,sol_ust);
 			}
 
-			await sleep(500);
+			await sleep(1500);
 			deblink_box(i,k);
 			deblink_box(0,k);
 		}
