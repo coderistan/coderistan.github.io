@@ -131,5 +131,5 @@ async function algorithm(){
 
 window.onload = function(event){
 	document.getElementById("aciklama").innerHTML += "<br/>"+"<font class = 'word'>"+kelime1+"</font>"+" vs "+"<font class = 'word'>"+kelime2+"</font>";
-	setTimeout(draw_table,2000);
+	setTimeout(draw_table,1500);
 }
