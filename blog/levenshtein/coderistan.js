@@ -1,6 +1,7 @@
 // @coderistan - 2019
 var kelime1 = "kitap";
 var kelime2 = "katip";
+var time_ = 1000;
 var satir = 1,sutun = 1;
 var i_ = 1, k_ = 1;
 
@@ -21,6 +22,7 @@ function blink_box(x,y,finish){
 			document.getElementById(x+"_"+y).style.backgroundColor = "yellow";
 		}
 	}else{
+		// tüm kutular doldurulup, algoritma tamamlandıktan sonra
 		document.getElementById(x+"_"+y).style.backgroundColor = "green";
 	}
 }
@@ -41,6 +43,7 @@ function fill_row(){
 		var nesne = document.getElementById(0+"_"+i);
 		nesne.innerHTML = kelime2.charAt(i-1);
 		nesne.style.backgroundColor = "rgb(0,138,255)";
+		nesne.style.color = "white";
 
 		var nesne = document.getElementById(1+"_"+i);
 		nesne.innerHTML = i-1;
@@ -53,6 +56,7 @@ function fill_column(){
 		var nesne = document.getElementById(i+"_"+0);
 		nesne.innerHTML = kelime1.charAt(i-1);
 		nesne.style.backgroundColor = "rgb(0,138,255)";
+		nesne.style.color = "white";
 
 		var nesne = document.getElementById(i+"_"+1);
 		nesne.innerHTML = i-1;
@@ -117,7 +121,7 @@ async function algorithm(){
 				document.getElementById(i+"_"+k).innerHTML = Math.min(sol,ust,sol_ust);
 			}
 
-			await sleep(1500);
+			await sleep(time_);
 			deblink_box(i,k);
 			deblink_box(0,k);
 		}
@@ -126,10 +130,31 @@ async function algorithm(){
 	}
 
 	blink_box(kelime1.length,kelime2.length,true);
+	document.getElementById("buton").disabled = false;
 
 }
 
-window.onload = function(event){
-	document.getElementById("aciklama").innerHTML += "<br/>"+"<font class = 'word'>"+kelime1+"</font>"+" vs "+"<font class = 'word'>"+kelime2+"</font>";
-	setTimeout(draw_table,1500);
+function init(){
+	kelime1 = document.getElementById("k1").value;
+	kelime2 = document.getElementById("k2").value;
+	time_ = document.getElementById("time_").value;
+
+	if(kelime1.length > 0 && kelime2.length > 0){
+		document.getElementById("buton").disabled = true;
+		if(parseInt(time_) < 100){
+			time_ = 100;
+		}else if(parseInt(time_) > 1000){
+			time = 1000;
+		}else{
+			time_ = parseInt(time_);
+		}
+
+		draw_table();
+	}else{
+		alert("Lütfen tüm alanları doldurun");
+	}
+}
+
+window.onload = function(){
+	document.getElementById("time_").value = time_;
 }
