@@ -1,0 +1,27 @@
+Başlamadan Önce
+===============
+
+JnetPcap Nedir?
+---------------
+
+JnetPcap, Windows'ta WinPcap Linux'da libpcap arayüzü olan bir kütüphanedir. Bu kütüphane ile yapılabilecekler;
+
+1. Ağ arayüzlerini listelemek
+2. Bir ağ arayüzünü monitor moduna alarak paketleri dinlemek
+3. Paket filtresi uygulayarak sadece istenilen paketlerin yakalanmasını sağlamak
+4. Yakalanan paketleri daha sonra inceleyebilmek için bir PCAP dosyasına kaydetmek
+5. Paketler oluşturarak bunları ağ arayüzü ile gönderebilmek
+6. Ağ istatistiği toplamak
+
+Biz burada Windows işletim sistemi kullanacağımız için WinPcap mutlaka bilgisayarımızda kurulu olmalıdır. Aksi takdirde JnetPcap tek başına bir işe yaramayacaktır. 
+
+İndirmiş olduğunuz JnetPcap zip dosyasını bir klasöre çıkarın ve içerisindeki jnetpcap.dll dosyasını Windows dizini altında bulunan system32(veya 64) içerisine atın. Çıkarmış olduğunuz bu jar dosyasının bulunduğu yeri unutmayın çünkü bu jar dosyasını daha sonra NetBeans'e tanıtacağız.
+
+NetBeans İle Geliştirme Yapma
+-----------------------------
+
+JnetPcap kütüphanesini geliştirebilmemiz için mutlaka NetBeans'de projemize tanıtmamız gerekir. Bunun için, proje sekmesinde Libraries üzerine sağ tıklıyoruz ve Add Jar/Folder'ı seçiyoruz. Daha sonra, jar dosyasını çıkardığımız yeri bulup projemize ekliyoruz. Artık geliştirme yapmaya hazırız.
+
+.. image:: _static/images/resim1.jpg
+	:width: 70%
+	:align: center

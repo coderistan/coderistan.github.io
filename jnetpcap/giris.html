@@ -1,0 +1,134 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Başlamadan Önce &#8212; jnetpcap 1.0 belgelendirme çalışması</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Ağ Arayüzlerini Listeleme" href="ifaces.html" />
+    <link rel="prev" title="JnetPcap Kullanımı" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="ifaces.html" title="Ağ Arayüzlerini Listeleme"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="JnetPcap Kullanımı"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">jnetpcap 1.0 belgelendirme çalışması</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Başlamadan Önce</a><ul>
+<li><a class="reference internal" href="#jnetpcap-nedir">JnetPcap Nedir?</a></li>
+<li><a class="reference internal" href="#netbeans-ile-gelistirme-yapma">NetBeans İle Geliştirme Yapma</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="index.html"
+                        title="önceki bölüm">JnetPcap Kullanımı</a></p>
+  <h4>Sonraki konu</h4>
+  <p class="topless"><a href="ifaces.html"
+                        title="sonraki bölüm">Ağ Arayüzlerini Listeleme</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/giris.rst.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Hızlı Arama</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Git" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="baslamadan-once">
+<h1>Başlamadan Önce<a class="headerlink" href="#baslamadan-once" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="jnetpcap-nedir">
+<h2>JnetPcap Nedir?<a class="headerlink" href="#jnetpcap-nedir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>JnetPcap, Windows’ta WinPcap Linux’da libpcap arayüzü olan bir kütüphanedir. Bu kütüphane ile yapılabilecekler;</p>
+<ol class="arabic simple">
+<li><p>Ağ arayüzlerini listelemek</p></li>
+<li><p>Bir ağ arayüzünü monitor moduna alarak paketleri dinlemek</p></li>
+<li><p>Paket filtresi uygulayarak sadece istenilen paketlerin yakalanmasını sağlamak</p></li>
+<li><p>Yakalanan paketleri daha sonra inceleyebilmek için bir PCAP dosyasına kaydetmek</p></li>
+<li><p>Paketler oluşturarak bunları ağ arayüzü ile gönderebilmek</p></li>
+<li><p>Ağ istatistiği toplamak</p></li>
+</ol>
+<p>Biz burada Windows işletim sistemi kullanacağımız için WinPcap mutlaka bilgisayarımızda kurulu olmalıdır. Aksi takdirde JnetPcap tek başına bir işe yaramayacaktır.</p>
+<p>İndirmiş olduğunuz JnetPcap zip dosyasını bir klasöre çıkarın ve içerisindeki jnetpcap.dll dosyasını Windows dizini altında bulunan system32(veya 64) içerisine atın. Çıkarmış olduğunuz bu jar dosyasının bulunduğu yeri unutmayın çünkü bu jar dosyasını daha sonra NetBeans’e tanıtacağız.</p>
+</div>
+<div class="section" id="netbeans-ile-gelistirme-yapma">
+<h2>NetBeans İle Geliştirme Yapma<a class="headerlink" href="#netbeans-ile-gelistirme-yapma" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>JnetPcap kütüphanesini geliştirebilmemiz için mutlaka NetBeans’de projemize tanıtmamız gerekir. Bunun için, proje sekmesinde Libraries üzerine sağ tıklıyoruz ve Add Jar/Folder’ı seçiyoruz. Daha sonra, jar dosyasını çıkardığımız yeri bulup projemize ekliyoruz. Artık geliştirme yapmaya hazırız.</p>
+<a class="reference internal image-reference" href="_images/resim1.jpg"><img alt="_images/resim1.jpg" class="align-center" src="_images/resim1.jpg" style="width: 70%;" /></a>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="ifaces.html" title="Ağ Arayüzlerini Listeleme"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="JnetPcap Kullanımı"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">jnetpcap 1.0 belgelendirme çalışması</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, coderistan.
+      <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0 ile oluşturulmuştur.
+    </div>
+  </body>
+</html>
