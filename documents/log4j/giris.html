@@ -1,0 +1,130 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Log4j Hakkında &#8212; log4j  belgelendirme çalışması</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="prev" title="Log4j Kütüphanesi" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="index.html" title="Log4j Kütüphanesi"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">log4j  belgelendirme çalışması</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Log4j Hakkında</a><ul>
+<li><a class="reference internal" href="#log4j-ozellikleri">Log4j Özellikleri</a></li>
+<li><a class="reference internal" href="#log4j-kurulumu">Log4j Kurulumu</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="index.html"
+                        title="önceki bölüm">Log4j Kütüphanesi</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/giris.rst.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Hızlı Arama</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Git" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="log4j-hakkinda">
+<h1>Log4j Hakkında<a class="headerlink" href="#log4j-hakkinda" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Log4j kütüphanesi, giriş kısmında da belirttiğimiz gibi loglama işlemleri için kullanılır. Ve tabii bundan daha fazlasını da sunuyor. Log4j kütüphanesi 3 ana bileşenden oluşuyor. Bunlar;</p>
+<ul class="simple">
+<li><p>Loggers: Loglama bilgilerini yakalamakla sorumludur.</p></li>
+<li><p>Appenders: Log bilgilerinin önceden belirlenmiş çıktılara yönlendirilmesinden sorumludur. Bu çıktı ekran olabileceği gibi, bir dosya da olabilir.</p></li>
+<li><p>Layouts: Log çıktılarının biçimlendirilmesinden sorumludur</p></li>
+</ul>
+<div class="section" id="log4j-ozellikleri">
+<h2>Log4j Özellikleri<a class="headerlink" href="#log4j-ozellikleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Log4j kütüphanesi, ayar dosyalarıyla istenildiği gibi kişiselleştirilebilir. Çalışma zamanında da bu ayar dosyalarıyla loglama seçenekleri değiştirilebilir, istenirse XML tipinde konfigurasyon dosyası kullanılarak da konfigure edilebilir. Thread korumalıdır ve hız için optimize edilmiştir. Birden fazla çıktı biçimini destekler. Log4j ile loglama yaparken 7 seviye vardır. Bunlar: ALL,TRACE,DEBUG,INFO,WARN,ERROR ve FATAL.</p>
+<ul class="simple">
+<li><p>ALL: Bütün log mesajlarını kaydeder</p></li>
+<li><p>TRACE: İzleme modu olarak çalışır, debug mesajlarından daha ayrıntılı bilgi vermeyi amaçlar</p></li>
+<li><p>DEBUG: Hata ayıklama için kullanılır</p></li>
+<li><p>INFO: Programda belirgin noktalarda bilgi vermek için kullanılan log seviyesi</p></li>
+<li><p>WARN: Hata potansiyeli olan logları belirtir</p></li>
+<li><p>ERROR: Programı durdurmayan hata mesajlarını belirtir</p></li>
+<li><p>FATAL: Programın durmasına neden olan hata mesajlarını belirtir</p></li>
+</ul>
+<p>Loglamanın avantajları olduğu kadar, dezavantajları da vardır. Örneğin çok detaylı kullanıldığında uygulamanın yavaşlamasına neden olur. Fazla detaylı log çıktısı, okunamaz olabilir ve asıl işlevini yerine getiremeyebilir. Yerinde ve uygun bir şekilde kullanıldığında çok faydalı bir işlemdir.</p>
+</div>
+<div class="section" id="log4j-kurulumu">
+<h2>Log4j Kurulumu<a class="headerlink" href="#log4j-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Log4j kütüphanesi özgür bir lisans olan Apache Lisansı altında dağıtılır. Kaynak kodları, sınıf dosyaları ve belgelere <a class="reference external" href="http://logging.apache.org/log4j/">http://logging.apache.org/log4j/</a> adresinden ulaşabilirsiniz.</p>
+<p>Yukarıdaki adresten Log4j için jar dosyasını indirdikten sonra, kendi IDE’nize tanıtmanız yeterlidir. NetBeans kullanıyorsanız menü üzerinden Tools&gt;Libraries tıklayarak açılan pencerede New Library ile yeni bir kütüphane oluşturun. Sonra da bu kütüphaneye bir isim verin(örneğin Log4j). Daha sonra bu kütüphaneyi seçerek önceden indirmiş olduğunuz jar dosyalarını ekleyin ve kaydedin. Artık NetBeans ile birlikte kullanıma hazırdır. İstediğiniz bir projede sadece kütüphaneyi ekleyerek kullanabilirsiniz.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="index.html" title="Log4j Kütüphanesi"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">log4j  belgelendirme çalışması</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, coderistan.
+      <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0 ile oluşturulmuştur.
+    </div>
+  </body>
+</html>
