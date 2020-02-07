@@ -1,0 +1,210 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Log4j Ayarlanması ve Kullanımı &#8212; log4j  belgelendirme çalışması</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="prev" title="Log4j Hakkında" href="giris.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="giris.html" title="Log4j Hakkında"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">log4j  belgelendirme çalışması</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Log4j Ayarlanması ve Kullanımı</a><ul>
+<li><a class="reference internal" href="#ayar-dosyasini-logger-a-tanitma">Ayar Dosyasını Logger’a Tanıtma</a></li>
+<li><a class="reference internal" href="#ayarlari-xml-olarak-tanimlama">Ayarları XML Olarak Tanımlama</a></li>
+<li><a class="reference internal" href="#ayar-dosyasi-kullanmadan-ayarlama-yapma">Ayar Dosyası Kullanmadan Ayarlama Yapma</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="giris.html"
+                        title="önceki bölüm">Log4j Hakkında</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ayarlama.rst.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Hızlı Arama</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Git" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="log4j-ayarlanmasi-ve-kullanimi">
+<h1>Log4j Ayarlanması ve Kullanımı<a class="headerlink" href="#log4j-ayarlanmasi-ve-kullanimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Log4j kütüphanesi, log çıktılarını yönetmek için ayar dosyası kullanır. Bu dosya ismi log4j.properties olarak belirlenir. Bu dosyayı programınızın kodlarının bulunduğu dizine koyabilirsiniz.</p>
+<p>log4j.properties:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Çıktı dosyası
+log=outputs/logger.log
+
+# Log4j dosyasının seviyesini ve Logger adını veriyoruz
+log4j.rootLogger = DEBUG,MyAppender
+
+# Appender tipinin ne olacağını belirtiyoruz. Dosyaya yazdıracağımız için
+# FileAppender kullandık
+log4j.appender.MyAppender=org.apache.log4j.FileAppender
+
+# Çıktı dosyasını tanımlıyoruz
+log4j.appender.MyAppender.File=${log}
+
+# Çıktıların formatının nasıl olacağını tanımlıyoruz
+# PatternLayout, çıktıları şablonlar olarak düzenlememize izin verir
+log4j.appender.MyAppender.layout=org.apache.log4j.PatternLayout
+log4j.appender.MyAppender.layout.conversionPattern=%m%n
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, öncelikle root logger’ın seviyesini ve Appender adını tanımlıyoruz. Daha sonra bu Appender tipinin ne olacağını belirliyoruz, yani dosyaya mı yazacağız yoksa başka bir çıktıya mı yönlendireceğiz onu ayarlıyoruz. Biz çıktılarımızı outputs klasörünün altındaki logger.log dosyasına yazdıracağız. Böyle bir klasör ve dosya yoksa bile otomatik olarak oluşturulacaktır. Bir logger için sadece bir tane Appender tanımlanır diye birşey yok, isterseniz birden fazla hedefe çıktı veren Appender yazabilirsiniz.</p>
+<p>En altta tanımladığımız PatternLayout, çıktıları biçimlendirme imkanı verir bize. Biz çıktılarımızın sadece mesajdan(%m) ve hemen ardından yeni satır karakterinden(%n) oluşmasını istedik. Formatlamanın detaylarını ileride göreceğiz. Şimdilik sadece kısaca bahsetmiş olduk.</p>
+<div class="section" id="ayar-dosyasini-logger-a-tanitma">
+<h2>Ayar Dosyasını Logger’a Tanıtma<a class="headerlink" href="#ayar-dosyasini-logger-a-tanitma" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Peki ayarları yaptıktan sonra, bunu programımızda nasıl kullanacağız? Kolay iş, hemen bir örnekle açıklamaya çalışalım.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">logdeneme</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.log4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.PropertyConfigurator</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LogDeneme</span> <span class="o">{</span>
+
+    <span class="kd">static</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">Test1</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Ayar dosyamızı yüklüyoruz</span>
+        <span class="c1">// Benim log4j.properties dosyam, ana sınıfımla aynı yerde.</span>
+        <span class="n">PropertyConfigurator</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="n">LogDeneme</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="s">&quot;log4j.properties&quot;</span><span class="o">).</span><span class="na">getPath</span><span class="o">());</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;MERHABA&quot;</span><span class="o">);</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;DÜNYA&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Programı çalıştırırsanız, programınızın kodlarının olduğu klasörde outputs/logger.log dosyası oluşmuş ve içerisine alt alta “MERHABA” “DÜNYA” yazılmış olacaktır.</p>
+</div>
+<div class="section" id="ayarlari-xml-olarak-tanimlama">
+<h2>Ayarları XML Olarak Tanımlama<a class="headerlink" href="#ayarlari-xml-olarak-tanimlama" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Ayarları XML tipinde yazmak istersek şu şekilde değiştirmemiz gerekir.</p>
+<p>log4j.properties:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE log4j:configuration SYSTEM &quot;log4j.dtd&quot;&gt;
+&lt;log4j:configuration debug=&quot;true&quot; xmlns:log4j=&#39;http://jakarta.apache.org/log4j/&#39;&gt;
+
+  &lt;appender name=&quot;MyAppender&quot; class=&quot;org.apache.log4j.FileAppender&quot;&gt;
+    &lt;param name=&quot;File&quot; value=&quot;outputs/logger.log&quot;/&gt;
+    &lt;layout class=&quot;org.apache.log4j.PatternLayout&quot;&gt;
+        &lt;param name=&quot;ConversionPattern&quot; value=&quot;%m%n&quot; /&gt;
+    &lt;/layout&gt;
+  &lt;/appender&gt;
+
+  &lt;root&gt;
+    &lt;priority value =&quot;debug&quot;&gt;&lt;/priority&gt;
+    &lt;appender-ref ref=&quot;MyAppender&quot;&gt;&lt;/appender-ref&gt;
+  &lt;/root&gt;
+
+&lt;/log4j:configuration&gt;
+</pre></div>
+</div>
+<p>Programımız içerisinde de, ayarları yüklemek için DOMConfigurator kullanmamız gerekiyor. Yani yukarıdaki ProjectConfigurator satırını şu şekilde değiştirmemiz gerekiyor</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">DOMConfigurator</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="n">LogDeneme</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="s">&quot;utils/log4j.properties&quot;</span><span class="o">).</span><span class="na">getPath</span><span class="o">());</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ayar-dosyasi-kullanmadan-ayarlama-yapma">
+<h2>Ayar Dosyası Kullanmadan Ayarlama Yapma<a class="headerlink" href="#ayar-dosyasi-kullanmadan-ayarlama-yapma" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Log4j, eğer istersek ayar dosyası kullanmadan, program içerisinde de ayarlama yapabilmemiz için bize BasicConfigurator sınıfını sunmuştur. Yukarıda log4j.properties dosyasını kullanarak yaptığımız ayarlamaları şu şekilde program içerisinde de yapabiliriz.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.logging.Level</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.BasicConfigurator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.FileAppender</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.LogManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.PatternLayout</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LogDeneme</span> <span class="o">{</span>
+
+    <span class="kd">static</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">LogDeneme</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">BasicConfigurator</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="k">new</span> <span class="n">FileAppender</span><span class="o">(</span><span class="k">new</span> <span class="n">PatternLayout</span><span class="o">(</span><span class="s">&quot;%m%n&quot;</span><span class="o">),</span><span class="s">&quot;utils/logger.log&quot;</span><span class="o">));</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;HELLO&quot;</span><span class="o">);</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;WORLD&quot;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// hata</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="giris.html" title="Log4j Hakkında"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">log4j  belgelendirme çalışması</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, coderistan.
+      <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0 ile oluşturulmuştur.
+    </div>
+  </body>
+</html>

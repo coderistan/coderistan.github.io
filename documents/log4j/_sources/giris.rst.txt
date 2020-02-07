@@ -7,6 +7,8 @@ Log4j kütüphanesi, giriş kısmında da belirttiğimiz gibi loglama işlemleri
 - Appenders: Log bilgilerinin önceden belirlenmiş çıktılara yönlendirilmesinden sorumludur. Bu çıktı ekran olabileceği gibi, bir dosya da olabilir. 
 - Layouts: Log çıktılarının biçimlendirilmesinden sorumludur
 
+Açıklamaları yaptığımıza göre, ilerleyen bölümlerde yukarıdaki bileşenlerin ingilizce isimlerini kullanacağımızı bildirmek isterim.
+
 Log4j Özellikleri
 -----------------
 
@@ -27,4 +29,6 @@ Log4j Kurulumu
 
 Log4j kütüphanesi özgür bir lisans olan Apache Lisansı altında dağıtılır. Kaynak kodları, sınıf dosyaları ve belgelere http://logging.apache.org/log4j/ adresinden ulaşabilirsiniz. 
 
-Yukarıdaki adresten Log4j için jar dosyasını indirdikten sonra, kendi IDE'nize tanıtmanız yeterlidir. NetBeans kullanıyorsanız menü üzerinden Tools>Libraries tıklayarak açılan pencerede New Library ile yeni bir kütüphane oluşturun. Sonra da bu kütüphaneye bir isim verin(örneğin Log4j). Daha sonra bu kütüphaneyi seçerek önceden indirmiş olduğunuz jar dosyalarını ekleyin ve kaydedin. Artık NetBeans ile birlikte kullanıma hazırdır. İstediğiniz bir projede sadece kütüphaneyi ekleyerek kullanabilirsiniz.
+Yukarıdaki adresten Log4j için jar dosyasını indirdikten sonra, kendi IDE'nize tanıtmanız yeterlidir. NetBeans kullanıyorsanız menü üzerinden Tools>Libraries tıklayarak açılan pencerede New Library ile yeni bir kütüphane oluşturun. Sonra da bu kütüphaneye bir isim verin(örneğin Log4j). Daha sonra bu kütüphaneyi seçerek önceden indirmiş olduğunuz jar dosyalarını ekleyin ve kaydedin. Artık NetBeans ile birlikte kullanıma hazırdır. İstediğiniz bir projede sadece kütüphaneyi ekleyerek kullanabilirsiniz. Aşağıda, bu işlemi nasıl yapacağınızı anlatan bir video var
+
+`Youtube <https://youtu.be/vqhQY7U9Rlc>`_

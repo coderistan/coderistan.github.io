@@ -1,0 +1,118 @@
+Log4j Ayarlanması ve Kullanımı
+==============================
+
+Log4j kütüphanesi, log çıktılarını yönetmek için ayar dosyası kullanır. Bu dosya ismi log4j.properties olarak belirlenir. Bu dosyayı programınızın kodlarının bulunduğu dizine koyabilirsiniz. 
+
+log4j.properties::
+	
+	# Çıktı dosyası
+	log=outputs/logger.log
+
+	# Log4j dosyasının seviyesini ve Logger adını veriyoruz
+	log4j.rootLogger = DEBUG,MyAppender
+
+	# Appender tipinin ne olacağını belirtiyoruz. Dosyaya yazdıracağımız için
+	# FileAppender kullandık
+	log4j.appender.MyAppender=org.apache.log4j.FileAppender
+
+	# Çıktı dosyasını tanımlıyoruz
+	log4j.appender.MyAppender.File=${log}
+
+	# Çıktıların formatının nasıl olacağını tanımlıyoruz
+	# PatternLayout, çıktıları şablonlar olarak düzenlememize izin verir
+	log4j.appender.MyAppender.layout=org.apache.log4j.PatternLayout
+	log4j.appender.MyAppender.layout.conversionPattern=%m%n
+
+Gördüğünüz gibi, öncelikle root logger'ın seviyesini ve Appender adını tanımlıyoruz. Daha sonra bu Appender tipinin ne olacağını belirliyoruz, yani dosyaya mı yazacağız yoksa başka bir çıktıya mı yönlendireceğiz onu ayarlıyoruz. Biz çıktılarımızı outputs klasörünün altındaki logger.log dosyasına yazdıracağız. Böyle bir klasör ve dosya yoksa bile otomatik olarak oluşturulacaktır. Bir logger için sadece bir tane Appender tanımlanır diye birşey yok, isterseniz birden fazla hedefe çıktı veren Appender yazabilirsiniz.
+
+En altta tanımladığımız PatternLayout, çıktıları biçimlendirme imkanı verir bize. Biz çıktılarımızın sadece mesajdan(%m) ve hemen ardından yeni satır karakterinden(%n) oluşmasını istedik. Formatlamanın detaylarını ileride göreceğiz. Şimdilik sadece kısaca bahsetmiş olduk. 
+
+Ayar Dosyasını Logger'a Tanıtma
+-------------------------------
+
+Peki ayarları yaptıktan sonra, bunu programımızda nasıl kullanacağız? Kolay iş, hemen bir örnekle açıklamaya çalışalım.
+
+.. code-block:: java
+
+	package logdeneme;
+
+	import org.apache.log4j.Logger;
+	import org.apache.log4j.PropertyConfigurator;
+
+	public class LogDeneme {
+
+	    static Logger logger = Logger.getLogger(Test1.class.getName());
+
+	    public static void main(String[] args) {
+	    	// Ayar dosyamızı yüklüyoruz
+	    	// Benim log4j.properties dosyam, ana sınıfımla aynı yerde.
+	        PropertyConfigurator.configure(LogDeneme.class.getResource("log4j.properties").getPath());
+
+	        logger.debug("MERHABA");
+	        logger.debug("DÜNYA");
+	    }
+	}
+
+Programı çalıştırırsanız, programınızın kodlarının olduğu klasörde outputs/logger.log dosyası oluşmuş ve içerisine alt alta "MERHABA" "DÜNYA" yazılmış olacaktır.
+
+
+Ayarları XML Olarak Tanımlama
+-----------------------------
+
+Ayarları XML tipinde yazmak istersek şu şekilde değiştirmemiz gerekir.
+
+log4j.properties::
+	
+	<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+	<log4j:configuration debug="true" xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	 
+	  <appender name="MyAppender" class="org.apache.log4j.FileAppender">
+	    <param name="File" value="outputs/logger.log"/>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%m%n" />
+	    </layout>
+	  </appender>
+	 
+	  <root>
+	    <priority value ="debug"></priority>
+	    <appender-ref ref="MyAppender"></appender-ref>
+	  </root>
+	 
+	</log4j:configuration>
+
+Programımız içerisinde de, ayarları yüklemek için DOMConfigurator kullanmamız gerekiyor. Yani yukarıdaki ProjectConfigurator satırını şu şekilde değiştirmemiz gerekiyor
+
+.. code-block:: java
+
+	DOMConfigurator.configure(LogDeneme.class.getResource("utils/log4j.properties").getPath());
+
+Ayar Dosyası Kullanmadan Ayarlama Yapma
+---------------------------------------
+
+Log4j, eğer istersek ayar dosyası kullanmadan, program içerisinde de ayarlama yapabilmemiz için bize BasicConfigurator sınıfını sunmuştur. Yukarıda log4j.properties dosyasını kullanarak yaptığımız ayarlamaları şu şekilde program içerisinde de yapabiliriz.
+
+.. code-block:: java
+
+	import java.io.IOException;
+	import java.util.logging.Level;
+	import org.apache.log4j.BasicConfigurator;
+	import org.apache.log4j.FileAppender;
+	import org.apache.log4j.LogManager;
+	import org.apache.log4j.Logger;
+	import org.apache.log4j.PatternLayout;
+
+	public class LogDeneme {
+
+	    static Logger logger = Logger.getLogger(LogDeneme.class.getName());
+
+	    public static void main(String[] args) {
+	        try {
+	            BasicConfigurator.configure(new FileAppender(new PatternLayout("%m%n"),"utils/logger.log"));
+	            
+	            logger.debug("HELLO");
+	            logger.debug("WORLD");
+	        } catch (IOException ex) {
+	            // hata
+	        }
+	    }
+	}
