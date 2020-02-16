@@ -13,12 +13,18 @@ Appender nesneleri, log mesaj akışının hangi hedeflere nasıl aktarılacağ�
 - HttpAppender: Log mesajlarını HTTP üzerinden gönderir.
 - NoSQLAppender: Log çıktılarını bir NoSQL veritabanına kaydetmek için kullanılır.
 
+Appender Nesnelerinin Özellikleri
+---------------------------------
+
 Tüm bu nesnelerin kendilerine ait özellikleri bulunmakla beraber, genel olarak bir Appender nesnesinde bulunan özellikler şunlardır.
 
 - Target(Hedef): Log mesajlarının hangi hedefe ulaştırılacağını belirler
 - Layout(Katman): Log mesajlarının biçimlendirilmesi için kullanılır
 - Threshold(Eşik): Appender nesneleri, Logger'ın seviyesinden bağımsız olarak bir de kendine özel olarak eşik değerine sahip olabilir. Böylece bu eşik değerinden düşük olan log mesajları dikkate alınmayacaktır.
 - Filter(Filtreleyici): Sadece eşik değeri ile değil, aynı zamanda bu mesajları analiz edip loglama için uygun olup olmadıklarını Filter nesneleri ile de tespit edebilir.
+
+Program İçerisinde Appender Kullanımı
+-------------------------------------
 
 Bir FileAppender nesnesinin nasıl kullanıldığını önceki bölümlerimizde görmüştük. Şimdi, bu nesnenin Java programı içerisinde nasıl tanımladığını görelim. 
 

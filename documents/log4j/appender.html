@@ -38,6 +38,15 @@
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Appender(Ekleyici)</a><ul>
+<li><a class="reference internal" href="#appender-nesnelerinin-ozellikleri">Appender Nesnelerinin Özellikleri</a></li>
+<li><a class="reference internal" href="#program-icerisinde-appender-kullanimi">Program İçerisinde Appender Kullanımı</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Önceki konu</h4>
   <p class="topless"><a href="ayarlama.html"
                         title="önceki bölüm">Log4j Ayarlanması ve Kullanımı</a></p>
@@ -80,6 +89,8 @@
 <li><p>HttpAppender: Log mesajlarını HTTP üzerinden gönderir.</p></li>
 <li><p>NoSQLAppender: Log çıktılarını bir NoSQL veritabanına kaydetmek için kullanılır.</p></li>
 </ul>
+<div class="section" id="appender-nesnelerinin-ozellikleri">
+<h2>Appender Nesnelerinin Özellikleri<a class="headerlink" href="#appender-nesnelerinin-ozellikleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Tüm bu nesnelerin kendilerine ait özellikleri bulunmakla beraber, genel olarak bir Appender nesnesinde bulunan özellikler şunlardır.</p>
 <ul class="simple">
 <li><p>Target(Hedef): Log mesajlarının hangi hedefe ulaştırılacağını belirler</p></li>
@@ -87,6 +98,9 @@
 <li><p>Threshold(Eşik): Appender nesneleri, Logger’ın seviyesinden bağımsız olarak bir de kendine özel olarak eşik değerine sahip olabilir. Böylece bu eşik değerinden düşük olan log mesajları dikkate alınmayacaktır.</p></li>
 <li><p>Filter(Filtreleyici): Sadece eşik değeri ile değil, aynı zamanda bu mesajları analiz edip loglama için uygun olup olmadıklarını Filter nesneleri ile de tespit edebilir.</p></li>
 </ul>
+</div>
+<div class="section" id="program-icerisinde-appender-kullanimi">
+<h2>Program İçerisinde Appender Kullanımı<a class="headerlink" href="#program-icerisinde-appender-kullanimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Bir FileAppender nesnesinin nasıl kullanıldığını önceki bölümlerimizde görmüştük. Şimdi, bu nesnenin Java programı içerisinde nasıl tanımladığını görelim.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.log4j.Appender</span><span class="o">;</span>
@@ -111,6 +125,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
+</div>
 </div>
 </div>
 
