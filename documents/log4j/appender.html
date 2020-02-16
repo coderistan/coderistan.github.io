@@ -1,0 +1,140 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Appender(Ekleyici) &#8212; log4j  belgelendirme çalışması</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="prev" title="Log4j Ayarlanması ve Kullanımı" href="ayarlama.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="ayarlama.html" title="Log4j Ayarlanması ve Kullanımı"
+             accesskey="P">önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">log4j  belgelendirme çalışması</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Önceki konu</h4>
+  <p class="topless"><a href="ayarlama.html"
+                        title="önceki bölüm">Log4j Ayarlanması ve Kullanımı</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Bu Sayfa</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/appender.rst.txt"
+            rel="nofollow">Kaynağı Göster</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Hızlı Arama</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Git" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appender-ekleyici">
+<h1>Appender(Ekleyici)<a class="headerlink" href="#appender-ekleyici" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Appender nesneleri, log mesaj akışının hangi hedeflere nasıl aktarılacağını belirler. Örneğin log akışını dosyaya aktarabilirsiniz, aktarırken aynı zamanda belirli bir formatta aktarılmasını sağlayabilirsiniz. Log4j çeşitli Appender nesnelerini bizlerin kullanımına sunmuştur. Bunlardan en çok kullanılanı FileAppender ve JDBCAppender nesneleridir. FileAppender bildiğimiz gibi dosyalara çıktı vermeyi sağlarken, JDBCAppender ise veritabanına çıktı vermek için kullanılır. Kullanılabilecek diğer nesneler;</p>
+<ul class="simple">
+<li><p>AsyncAppender: Log mesajlarının Thread vasıtasıyla Appender nesnelerine ulaşmasını sağlar.</p></li>
+<li><p>ConsoleAppender: Varsayılan hedefe mesajları gönderir.</p></li>
+<li><p>RollingFileAppender: Belirli bir boyuta ulaşan log dosyalarını belirlenen politikalara göre yeniden düzenler ve loglamak için yeni bir dosya oluşturur.</p></li>
+<li><p>JMSAppender: JMS(Java Messaging Service) üzerinden log mesajlarını gönderir.</p></li>
+<li><p>SocketAppender: Log mesajlarını belirli bir host:port adresine gönderir.</p></li>
+<li><p>SyslogAppender: Bir SocketAppender nesnesidir ve çıktıları belirli bir format içerisinde gönderir.</p></li>
+<li><p>SMTPAppender: Log mesajlarını mail olarak gönderir. Genellikle kritik hatalar için kullanılır.</p></li>
+<li><p>HttpAppender: Log mesajlarını HTTP üzerinden gönderir.</p></li>
+<li><p>NoSQLAppender: Log çıktılarını bir NoSQL veritabanına kaydetmek için kullanılır.</p></li>
+</ul>
+<p>Tüm bu nesnelerin kendilerine ait özellikleri bulunmakla beraber, genel olarak bir Appender nesnesinde bulunan özellikler şunlardır.</p>
+<ul class="simple">
+<li><p>Target(Hedef): Log mesajlarının hangi hedefe ulaştırılacağını belirler</p></li>
+<li><p>Layout(Katman): Log mesajlarının biçimlendirilmesi için kullanılır</p></li>
+<li><p>Threshold(Eşik): Appender nesneleri, Logger’ın seviyesinden bağımsız olarak bir de kendine özel olarak eşik değerine sahip olabilir. Böylece bu eşik değerinden düşük olan log mesajları dikkate alınmayacaktır.</p></li>
+<li><p>Filter(Filtreleyici): Sadece eşik değeri ile değil, aynı zamanda bu mesajları analiz edip loglama için uygun olup olmadıklarını Filter nesneleri ile de tespit edebilir.</p></li>
+</ul>
+<p>Bir FileAppender nesnesinin nasıl kullanıldığını önceki bölümlerimizde görmüştük. Şimdi, bu nesnenin Java programı içerisinde nasıl tanımladığını görelim.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.Appender</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.FileAppender</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.Layout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.LogManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.PatternLayout</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LogDeneme</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LogManager</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">LogDeneme</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+        <span class="n">Layout</span> <span class="n">l</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PatternLayout</span><span class="o">(</span><span class="s">&quot;%m%n&quot;</span><span class="o">);</span>
+        <span class="n">Appender</span> <span class="n">app</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileAppender</span><span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="s">&quot;mylogger.log&quot;</span><span class="o">);</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="na">addAppender</span><span class="o">(</span><span class="n">app</span><span class="o">);</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">setLevel</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">log4j</span><span class="o">.</span><span class="na">Level</span><span class="o">.</span><span class="na">DEBUG</span><span class="o">);</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;İşlem tamamlandı&quot;</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="ayarlama.html" title="Log4j Ayarlanması ve Kullanımı"
+             >önceki</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">log4j  belgelendirme çalışması</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, coderistan.
+      <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0 ile oluşturulmuştur.
+    </div>
+  </body>
+</html>

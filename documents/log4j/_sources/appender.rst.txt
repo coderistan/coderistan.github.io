@@ -1,0 +1,48 @@
+Appender(Ekleyici)
+==================
+
+Appender nesneleri, log mesaj akışının hangi hedeflere nasıl aktarılacağını belirler. Örneğin log akışını dosyaya aktarabilirsiniz, aktarırken aynı zamanda belirli bir formatta aktarılmasını sağlayabilirsiniz. Log4j çeşitli Appender nesnelerini bizlerin kullanımına sunmuştur. Bunlardan en çok kullanılanı FileAppender ve JDBCAppender nesneleridir. FileAppender bildiğimiz gibi dosyalara çıktı vermeyi sağlarken, JDBCAppender ise veritabanına çıktı vermek için kullanılır. Kullanılabilecek diğer nesneler;
+
+- AsyncAppender: Log mesajlarının Thread vasıtasıyla Appender nesnelerine ulaşmasını sağlar.
+- ConsoleAppender: Varsayılan hedefe mesajları gönderir.
+- RollingFileAppender: Belirli bir boyuta ulaşan log dosyalarını belirlenen politikalara göre yeniden düzenler ve loglamak için yeni bir dosya oluşturur.
+- JMSAppender: JMS(Java Messaging Service) üzerinden log mesajlarını gönderir.
+- SocketAppender: Log mesajlarını belirli bir host:port adresine gönderir.
+- SyslogAppender: Bir SocketAppender nesnesidir ve çıktıları belirli bir format içerisinde gönderir.
+- SMTPAppender: Log mesajlarını mail olarak gönderir. Genellikle kritik hatalar için kullanılır.
+- HttpAppender: Log mesajlarını HTTP üzerinden gönderir.
+- NoSQLAppender: Log çıktılarını bir NoSQL veritabanına kaydetmek için kullanılır.
+
+Tüm bu nesnelerin kendilerine ait özellikleri bulunmakla beraber, genel olarak bir Appender nesnesinde bulunan özellikler şunlardır.
+
+- Target(Hedef): Log mesajlarının hangi hedefe ulaştırılacağını belirler
+- Layout(Katman): Log mesajlarının biçimlendirilmesi için kullanılır
+- Threshold(Eşik): Appender nesneleri, Logger'ın seviyesinden bağımsız olarak bir de kendine özel olarak eşik değerine sahip olabilir. Böylece bu eşik değerinden düşük olan log mesajları dikkate alınmayacaktır.
+- Filter(Filtreleyici): Sadece eşik değeri ile değil, aynı zamanda bu mesajları analiz edip loglama için uygun olup olmadıklarını Filter nesneleri ile de tespit edebilir.
+
+Bir FileAppender nesnesinin nasıl kullanıldığını önceki bölümlerimizde görmüştük. Şimdi, bu nesnenin Java programı içerisinde nasıl tanımladığını görelim. 
+
+.. code-block:: java
+
+	import java.io.IOException;
+	import org.apache.log4j.Appender;
+	import org.apache.log4j.FileAppender;
+	import org.apache.log4j.Layout;
+	import org.apache.log4j.LogManager;
+	import org.apache.log4j.Logger;
+	import org.apache.log4j.PatternLayout;
+
+	public class LogDeneme {
+
+	    public static void main(String[] args) throws IOException {
+	        Logger logger = LogManager.getLogger(LogDeneme.class);
+
+	        Layout l = new PatternLayout("%m%n");
+	        Appender app = new FileAppender(l, "mylogger.log");
+
+	        logger.addAppender(app);
+	        logger.setLevel(org.apache.log4j.Level.DEBUG);
+	        logger.debug("İşlem tamamlandı");
+
+	    }
+	}
