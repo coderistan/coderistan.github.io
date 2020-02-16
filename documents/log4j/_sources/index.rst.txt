@@ -1,7 +1,6 @@
-.. log4j documentation master file, created by
-   sphinx-quickstart on Fri Dec 20 23:11:02 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. meta::
+	:description: Log4j Kütüphanesi belgeleri
+	:keywords: log4j,java,sphinx,belgelendirme,loglama,günlük dosyaları
 
 Log4j Kütüphanesi
 =================
@@ -11,9 +10,12 @@ bir programda bazı noktalarda ekrana çıktı vererek hatanın sebebini anlamay
 
 Bu tür sorunlara çözüm olarak geliştirilen kütüphaneler vardır. Bunlardan birisi de Java programlama dili için geliştirilen Log4j kütüphanesidir. Apache Software Foundation tarafından geliştirilen bu kütüphaneyi bu yazı serisinde elimden geldiğince anlatmaya çalışacağım. Ancak bütün özellikleri birebir aktarmak mümkün olmadığı için dikkate değer kısımları anlatmaya çalışacağım. Bu belgelerde Log4j kütüphanesinin 1.2.x sürümleri anlatılacaktır. Eksikleri bildirirseniz çok memnun olurum. İyi okumalar.
 
+Belgeleri PDF olarak indirmek için: Tıkla_
+
 Coderistan_
 
 .. _Coderistan: https://coderistan.blogspot.com
+.. _Tıkla: https://coderistan.github.io/public/pdf/log4j_coderistan.pdf
 
 .. toctree::
    :maxdepth: 2
