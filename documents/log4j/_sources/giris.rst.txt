@@ -17,17 +17,17 @@ Log4j kütüphanesi, ayar dosyalarıyla istenildiği gibi kişiselleştirilebili
 - ALL: Bütün log mesajlarını kaydeder
 - TRACE: İzleme modu olarak çalışır, debug mesajlarından daha ayrıntılı bilgi vermeyi amaçlar
 - DEBUG: Hata ayıklama için kullanılır
-- INFO: Programda belirgin noktalarda bilgi vermek için kullanılan log seviyesi
-- WARN: Hata potansiyeli olan logları belirtir
-- ERROR: Programı durdurmayan hata mesajlarını belirtir
-- FATAL: Programın durmasına neden olan hata mesajlarını belirtir
+- INFO: Programda belirgin noktalarda bilgi vermek için kullanılan log seviyesi. Örneğin bir işlemin tamamlandığını bildirme gibi.
+- WARN: Hata potansiyeli olan logları belirtir. 
+- ERROR: Programı durdurmayan ancak bir işlemin yürütülmesine engel olan hata mesajlarını belirtir.
+- FATAL: Programın durmasına neden olan hata mesajlarını belirtir.
 
 Loglamanın avantajları olduğu kadar, dezavantajları da vardır. Örneğin çok detaylı kullanıldığında uygulamanın yavaşlamasına neden olur. Fazla detaylı log çıktısı, okunamaz olabilir ve asıl işlevini yerine getiremeyebilir. Yerinde ve uygun bir şekilde kullanıldığında çok faydalı bir işlemdir.
 
 Log4j Kurulumu
 --------------
 
-Log4j kütüphanesi özgür bir lisans olan Apache Lisansı altında dağıtılır. Kaynak kodları, sınıf dosyaları ve belgelere http://logging.apache.org/log4j/ adresinden ulaşabilirsiniz. 
+Log4j kütüphanesi özgür bir lisans olan Apache Lisansı altında dağıtılır. Kaynak kodları, sınıf dosyaları ve belgelere http://logging.apache.org/log4j/ adresinden ulaşabilirsiniz. Belgelerin girişinde de belirtildiği gibi, 1.2.x sürümleri dikkate alınarak anlatım yapılmıştır. Buna dikkat etmenizi rica ediyorum. 
 
 Yukarıdaki adresten Log4j için jar dosyasını indirdikten sonra, kendi IDE'nize tanıtmanız yeterlidir. NetBeans kullanıyorsanız menü üzerinden Tools>Libraries tıklayarak açılan pencerede New Library ile yeni bir kütüphane oluşturun. Sonra da bu kütüphaneye bir isim verin(örneğin Log4j). Daha sonra bu kütüphaneyi seçerek önceden indirmiş olduğunuz jar dosyalarını ekleyin ve kaydedin. Artık NetBeans ile birlikte kullanıma hazırdır. İstediğiniz bir projede sadece kütüphaneyi ekleyerek kullanabilirsiniz. Aşağıda, bu işlemi nasıl yapacağınızı anlatan bir video var
 

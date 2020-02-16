@@ -98,16 +98,16 @@
 <li><p>ALL: Bütün log mesajlarını kaydeder</p></li>
 <li><p>TRACE: İzleme modu olarak çalışır, debug mesajlarından daha ayrıntılı bilgi vermeyi amaçlar</p></li>
 <li><p>DEBUG: Hata ayıklama için kullanılır</p></li>
-<li><p>INFO: Programda belirgin noktalarda bilgi vermek için kullanılan log seviyesi</p></li>
-<li><p>WARN: Hata potansiyeli olan logları belirtir</p></li>
-<li><p>ERROR: Programı durdurmayan hata mesajlarını belirtir</p></li>
-<li><p>FATAL: Programın durmasına neden olan hata mesajlarını belirtir</p></li>
+<li><p>INFO: Programda belirgin noktalarda bilgi vermek için kullanılan log seviyesi. Örneğin bir işlemin tamamlandığını bildirme gibi.</p></li>
+<li><p>WARN: Hata potansiyeli olan logları belirtir.</p></li>
+<li><p>ERROR: Programı durdurmayan ancak bir işlemin yürütülmesine engel olan hata mesajlarını belirtir.</p></li>
+<li><p>FATAL: Programın durmasına neden olan hata mesajlarını belirtir.</p></li>
 </ul>
 <p>Loglamanın avantajları olduğu kadar, dezavantajları da vardır. Örneğin çok detaylı kullanıldığında uygulamanın yavaşlamasına neden olur. Fazla detaylı log çıktısı, okunamaz olabilir ve asıl işlevini yerine getiremeyebilir. Yerinde ve uygun bir şekilde kullanıldığında çok faydalı bir işlemdir.</p>
 </div>
 <div class="section" id="log4j-kurulumu">
 <h2>Log4j Kurulumu<a class="headerlink" href="#log4j-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
-<p>Log4j kütüphanesi özgür bir lisans olan Apache Lisansı altında dağıtılır. Kaynak kodları, sınıf dosyaları ve belgelere <a class="reference external" href="http://logging.apache.org/log4j/">http://logging.apache.org/log4j/</a> adresinden ulaşabilirsiniz.</p>
+<p>Log4j kütüphanesi özgür bir lisans olan Apache Lisansı altında dağıtılır. Kaynak kodları, sınıf dosyaları ve belgelere <a class="reference external" href="http://logging.apache.org/log4j/">http://logging.apache.org/log4j/</a> adresinden ulaşabilirsiniz. Belgelerin girişinde de belirtildiği gibi, 1.2.x sürümleri dikkate alınarak anlatım yapılmıştır. Buna dikkat etmenizi rica ediyorum.</p>
 <p>Yukarıdaki adresten Log4j için jar dosyasını indirdikten sonra, kendi IDE’nize tanıtmanız yeterlidir. NetBeans kullanıyorsanız menü üzerinden Tools&gt;Libraries tıklayarak açılan pencerede New Library ile yeni bir kütüphane oluşturun. Sonra da bu kütüphaneye bir isim verin(örneğin Log4j). Daha sonra bu kütüphaneyi seçerek önceden indirmiş olduğunuz jar dosyalarını ekleyin ve kaydedin. Artık NetBeans ile birlikte kullanıma hazırdır. İstediğiniz bir projede sadece kütüphaneyi ekleyerek kullanabilirsiniz. Aşağıda, bu işlemi nasıl yapacağınızı anlatan bir video var</p>
 <p><a class="reference external" href="https://youtu.be/vqhQY7U9Rlc">Youtube</a></p>
 </div>
