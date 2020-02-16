@@ -10,7 +10,7 @@ bir programda bazı noktalarda ekrana çıktı vererek hatanın sebebini anlamay
 
 Bu tür sorunlara çözüm olarak geliştirilen kütüphaneler vardır. Bunlardan birisi de Java programlama dili için geliştirilen Log4j kütüphanesidir. Apache Software Foundation tarafından geliştirilen bu kütüphaneyi bu yazı serisinde elimden geldiğince anlatmaya çalışacağım. Ancak bütün özellikleri birebir aktarmak mümkün olmadığı için dikkate değer kısımları anlatmaya çalışacağım. Bu belgelerde Log4j kütüphanesinin 1.2.x sürümleri anlatılacaktır. Eksikleri bildirirseniz çok memnun olurum. İyi okumalar.
 
-Belgeleri PDF olarak indirmek için: Tıkla_
+Belgeleri PDF olarak indirmek için: Tıkla_ (şifre: coderistan)
 
 Coderistan_
 
